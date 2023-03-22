@@ -8,7 +8,7 @@ const setFilePath = async () => {
 	const baseDir = await prompts({
 		type: 'text',
 		name: 'fp',
-		message: colors.white.bold("Which directory contains the 'src' directory?")
+		message: colors.white.bold('What is your working directory?')
 	})
 
 	if (fs.existsSync(path.join(baseDir.fp))) {

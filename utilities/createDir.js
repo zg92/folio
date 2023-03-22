@@ -17,9 +17,12 @@ const getCreateDirInfo = async (dirPath) => {
 		name: 'createDirInfo',
 		message: colors.white.bold('What should the name of the folder be?')
 	})
-	if (!checkExists(path.join(dirPath + `/${fileTypeJS.createDirInfo}`))) {
+	if (checkExists(path.join(dirPath + `/${fileTypeJS.createDirInfo}`))) {
 		createDir(path.join(dirPath + `/${fileTypeJS.createDirInfo}`))
-		return dirPath + `/${fileTypeJS.createDirInfo}`
+		return {
+			path: dirPath + `/${fileTypeJS.createDirInfo}`,
+			latestPath: fileTypeJS.createDirInfo
+		}
 	}
 }
 

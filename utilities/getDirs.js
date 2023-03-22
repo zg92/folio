@@ -1,7 +1,6 @@
 const fs = require('fs')
 const prompts = require('prompts')
 const path = require('path')
-const { getConfig } = require('./log')
 const colors = require('ansi-colors')
 const { getCreateDirInfo } = require('./createDir')
 const createFile = require('./createFiles')
@@ -29,7 +28,7 @@ const createNestPrompt = async () => {
 		type: 'select',
 		name: 'createNest',
 		message: colors.white.bold(
-			'Which directory do you want to create files in?'
+			'Do you want to create a folder here or explore its contents?'
 		),
 		choices: [
 			{ name: 'Create', value: 'create' },
@@ -60,7 +59,7 @@ const folderCreateController = async (dirPath, fileName) => {
 		const createdFolder = await getCreateDirInfo(
 			path.join(dirPath, selectedFolder)
 		)
-		createFile(createdFolder, selectedFolder, fileName)
+		createFile(createdFolder.path, createdFolder.latestPath, fileName)
 	}
 }
 
